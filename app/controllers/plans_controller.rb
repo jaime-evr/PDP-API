@@ -16,4 +16,16 @@ class PlansController < ApplicationController
       format.xml { render xml: plan, status: :ok }
     end
   end
+
+  def create
+    plan = Plan.new(plan_params)
+    if plan.save
+      render json: plan, status: 201, location: plan
+    end
+  end
+
+  private
+    def plan_params
+      params.require(:plan).permit(:name, :description)
+    end
 end
