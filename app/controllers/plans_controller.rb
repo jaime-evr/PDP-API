@@ -20,7 +20,7 @@ class PlansController < ApplicationController
   def create
     plan = Plan.new(plan_params)
     if plan.save
-      render json: plan, status: 201, location: plan
+      head 204, location: plan
     end
   end
 
