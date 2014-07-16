@@ -21,6 +21,8 @@ class PlansController < ApplicationController
     plan = Plan.new(plan_params)
     if plan.save
       head 204, location: plan
+    else
+      render json: plan.errors, status: :unprocessable_entity
     end
   end
 
